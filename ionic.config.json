@@ -1,0 +1,7 @@
+{
+  "name": "repo-personas-grupo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
