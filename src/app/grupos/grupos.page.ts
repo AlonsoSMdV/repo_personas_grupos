@@ -25,12 +25,6 @@ export class GruposPage implements OnInit {
   }
 
 
-  @ViewChildren('avatar') avatars!: QueryList<ElementRef>;
-  @ViewChild('animatedAvatar') animatedAvatar!: ElementRef;
-  @ViewChild('animatedAvatarContainer') animatedAvatarContainer!: ElementRef;
-
-  selectedGroup: any = null;
-  isAnimating = false;
   page:number = 1;
   pageSize:number = 25;
 
@@ -41,15 +35,7 @@ export class GruposPage implements OnInit {
         console.log('data recieved', response.data);
         this._group.next([...this._group.value, ...response.data]);
         this.page++;
-        
-        if(notify){
-          notify.complete();
-        }
-      },
-      error: () => {
-        if(notify){
-          notify.complete();
-        }
+        notify?.complete();
       }
     });
   }
