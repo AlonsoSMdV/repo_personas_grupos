@@ -87,4 +87,8 @@ export class PersonasPage implements OnInit {
     
   }
 
+  async addPerson(){
+    
+  }
+
 }
