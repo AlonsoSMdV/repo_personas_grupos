@@ -1,10 +1,54 @@
-  <div ngIf="person">
-    <p>
-      {{ person?.name}} {{ person?.surname}} 
-    </p>
-  </div>
-  <div ngIf="!person">
-    <p>
-      No hay datos
-    </p>
-  </div>
+<ion-header>
+  <ion-title>
+    @if (person){
+      <h1>Editar persona</h1>
+    }
+    @else{
+      <h1>Nueva Persona</h1>
+    }
+  </ion-title>
+</ion-header>
+<ion-content>
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+      <p *ngIf="name?.errors?.['required']">El nombre es obligatorio.</p>
+      <p *ngIf="name?.errors?.['minlength']">El nombre debe tener al menos 2 caracteres.</p>
+      <p></p>
+    </ion-text>
+
+    <ion-item>
+      <ion-label position="floating">Apellidos</ion-label>
+      <ion-input type="text" formControlName="surname"></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="surname?.invalid && (surname?.dirty || surname?.touched)">
+      <p *ngIf="surname?.errors?.['required']">Los apellidos son obligatorio.</p>
+      <p *ngIf="surname?.errors?.['minlength']">Los apellidos deben tener al menos 2 caracteres.</p>
+      <p></p>
+    </ion-text>
+
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="text" formControlName="email"></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+      <p *ngIf="email?.errors?.['required']">El email es obligatorio.</p>
+      <p *ngIf="email?.errors?.['email']">Por favor ingrese un email válido.</p>
+      <p></p>
+    </ion-text>
+
+    <ion-item>
+      <ion-label>Género</ion-label>
+      <ion-input type="text" formControlName="gender"></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="gender?.invalid && (gender?.dirty || gender?.touched)">
+      <p *ngIf="gender?.errors?.['required']">El género es obligatorio.</p>
+      <p></p>
+    </ion-text>
+  </form>
+
+  <ion-button [disabled]="formGroup.invalid" expand="full" type="submit" [disabled]="formGroup.invalid">Registrar</ion-button>
+</ion-content>

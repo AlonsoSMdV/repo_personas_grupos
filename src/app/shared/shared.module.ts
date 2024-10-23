@@ -4,6 +4,7 @@ import { ButtonsComponent } from './components/buttons/buttons.component';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { PersonModalComponent } from './components/person-modal/person-modal.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -12,7 +13,8 @@ import { PersonModalComponent } from './components/person-modal/person-modal.com
   imports: [
     CommonModule,
     IonicModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   exports: [ButtonsComponent, PersonModalComponent]
 })
