@@ -8,7 +8,7 @@ import { GROUP_API_URL_TOKEN, GROUP_REPOSITORY_MAPPING_TOKEN, GROUP_REPOSITORY_T
 import { BaseRespositoryLocalStorageService } from './impl/base-repository-local-storage.service';
 import { Model } from '../models/base.model';
 import { IBaseMapping } from './intefaces/base-mapping.interface';
-import { BaseRepositoryJsonService } from './impl/base-repository-json-server.sevice';
+import { JsonServerRepositoryService } from './impl/json-server-repository.sevice';
 import { Group } from '../models/group.model';
 // Importa otros modelos según sea necesario
 
@@ -21,7 +21,7 @@ export function createLocalStorageRepository<T extends Model>(resource: string, 
 }
 
 export function createJsonServerRepository<T extends Model>(http: HttpClient, apiUrl: string, resource:string, mapping:IBaseMapping<T>): IBaseRepository<T> {
-  return new BaseRepositoryJsonService<T>(http, apiUrl, resource, mapping);
+  return new JsonServerRepositoryService<T>(http, apiUrl, resource, mapping);
 }
 
 

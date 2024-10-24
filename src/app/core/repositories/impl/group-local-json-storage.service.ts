@@ -12,27 +12,31 @@ interface GroupRaw{
     providedIn: 'root'
   })
   export class JsonServerStorageMapping implements IBaseMapping<Group> {
-    getPaginated(page:number, pageSize:number, pages:number, data: GroupRaw[]): Paginated<Group> {
+    setAdd(data: Group) {
+        throw new Error("Method not implemented.");
+    }
+    setUpdate(data: any) {
+        throw new Error("Method not implemented.");
+    }
+    getPaginated(page:number, pageSize: number, pages:number, data:GroupRaw[]): Paginated<Group> {
         return {page:page, pageSize:pageSize, pages:pages, data:data.map<Group>((d:GroupRaw)=>{
             return this.getOne(d);
         })};
     }
-    getOne(data: any): Group {
+    getOne(data: GroupRaw):Group {
         return {
             id:data.id, 
-            name:data.nombre,
-        }
+            name:data.nombre, 
+        };
     }
-    getAdded(data: GroupRaw): Group {
-        return this.getOne(data);
+    getAdded(data: any):Group {
+        throw new Error("Method not implemented.");
     }
-    getUpdated(data: GroupRaw): Group {
-        return this.getOne(data);
+    getUpdated(data: any):Group {
+        throw new Error("Method not implemented.");
     }
-    getDeleted(data: GroupRaw): Group {
-        return this.getOne(data);
+    getDeleted(data: any):Group {
+        throw new Error("Method not implemented.");
     }
-
-    
   }
   
